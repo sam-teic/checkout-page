@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Icon from "./Icon";
 
 export default function TopNavBar() {
@@ -9,18 +8,6 @@ export default function TopNavBar() {
       <div className="flex justify-between items-center h-20 px-8 w-full max-w-360 mx-auto">
         <div className="text-2xl font-headline font-bold tracking-tighter text-on-surface">
           Sam Collections
-        </div>
-
-        <div className="hidden md:flex items-center space-x-8">
-          {["Collections", "Journal", "Archive"].map((item) => (
-            <Link
-              key={item}
-              href="#"
-              className="font-headline tracking-tight text-sm uppercase text-slate-500 hover:text-primary transition-colors"
-            >
-              {item}
-            </Link>
-          ))}
         </div>
 
         <div className="flex items-center space-x-6">
