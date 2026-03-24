@@ -23,7 +23,7 @@ export default function ShippingInformation() {
             className="w-full h-14 bg-white px-4 bg-surface-container-lowest rounded-xl border-0 focus:ring-2 focus:ring-primary/20 transition-all outline-none text-on-surface appearance-none"
             id="country"
           >
-            <option>United States</option>
+            <option>Nigeria</option>
             <option>United Kingdom</option>
             <option>France</option>
             <option>Japan</option>
