@@ -20,6 +20,7 @@ export default function FloatingInput({
   return (
     <div className="relative group">
       <input
+        style={{ colorScheme: "light" }}
         className={`peer w-full h-14 px-4 pt-5 pb-1 bg-white rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-900 transition-all outline-none text-gray-900 ${extraClasses}`}
         id={id}
         placeholder=" "
