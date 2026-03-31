@@ -6,11 +6,29 @@ interface IconProps {
     | "credit-card"
     | "minus"
     | "person"
-    | "shopping-bag";
+    | "shopping-bag"
+    | "close";
 }
 
 export default function Icon({ className = "", name }: IconProps) {
   switch (name) {
+    case "close":
+      return (
+        <svg
+          aria-hidden="true"
+          className={className}
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M6 18L18 6M6 6l12 12"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.8"
+          />
+        </svg>
+      );
     case "add":
       return (
         <svg

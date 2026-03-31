@@ -1,51 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import OrderItem, { CartItem } from "./OrderItem";
-
-const INITIAL_ITEMS: CartItem[] = [
-  {
-    id: 1,
-    name: "Studio Sneaker 01",
-    color: "Bone White",
-    size: "42",
-    price: 245.0,
-    imageSrc:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAYjfTvFi_qcXExosCYww937h4wUwxZToS4j77_gUEKNvpoiGBIlol2ZPQ0bWafcVLVUK48GhIj4t35lxeuKgx065LMld_RztNfpMetw6PHl8e1rRxRTYBe1bMUA0gbiUXPSq7h2mPEFhy0a-3G-i5pQ_-qFISWDy2eWzfQDGpMzx68IqLsayVrJ_YO3EWZZNnwwa5xzU5jd4B32kxpOUcGow_Bpu6-6xO6BmKoLr_eb1K9ZLtoad60e50iiRNSkPiFfBP6FrXfF3Q",
-    imageAlt: "Modern beige leather minimalist sneakers on soft background",
-  },
-  {
-    id: 2,
-    name: "Loro Piana Overcoat",
-    color: "Charcoal",
-    size: "L",
-    price: 1890.0,
-    imageSrc:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAxgy-Q7KneO_oZeJ13Z2q8SJNaUkUUTSBK2stMd6hfUoo2dqJAsjvIMTk6Baxt5keY8cJq4XeVlGHrLGd-qUTX0os3yao1p0gedxfC0YFfZJTAdjzneTSA23fTPMZrg0CJHOtbkhl99vqtih7Nnd_2DFSjhfyFHkShNwzDRiBi0YTn9-8eyETEcfkcfOVUkeaDICdyTP-R2yzrcQVTWbSx7z5gMe6H1zx_GKNeLOgkIhh0XtJJwSQW0ZxNLXxZbvtm6XWiizOzfdM",
-    imageAlt: "High-end charcoal wool overcoat detail texture",
-  },
-];
+import { useCart } from "./CartProvider";
+import OrderItem from "./OrderItem";
 
 const TAX_RATE = 0.08;
 
 export default function OrderSummary() {
-  const [quantities, setQuantities] = useState<Record<number, number>>({
-    1: 1,
-    2: 1,
-  });
+  const { items, updateQuantity, subtotal } = useCart();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleQuantityChange = (id: number, delta: number) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [id]: Math.max(1, (prev[id] || 1) + delta),
-    }));
+    updateQuantity(id, delta);
   };
 
-  const subtotal = INITIAL_ITEMS.reduce(
-    (sum, item) => sum + item.price * (quantities[item.id] || 1),
-    0
-  );
   const estimatedTax = subtotal * TAX_RATE;
   const total = subtotal + estimatedTax;
 
@@ -61,14 +29,20 @@ export default function OrderSummary() {
 
       {/* Product Items */}
       <div className="space-y-8">
-        {INITIAL_ITEMS.map((item) => (
-          <OrderItem
-            key={item.id}
-            item={item}
-            quantity={quantities[item.id] || 1}
-            onQuantityChange={handleQuantityChange}
-          />
-        ))}
+        {items.length === 0 ? (
+          <div className="text-center py-8 text-on-surface-variant">
+            <p>Your cart is empty.</p>
+          </div>
+        ) : (
+          items.map((item) => (
+            <OrderItem
+              key={item.id}
+              item={item}
+              quantity={item.quantity}
+              onQuantityChange={handleQuantityChange}
+            />
+          ))
+        )}
       </div>
 
       {/* Divider */}

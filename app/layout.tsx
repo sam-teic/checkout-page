@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { CartProvider } from "@/components/CartProvider";
 
 export const metadata: Metadata = {
   title: "Checkout - sam collections",
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <body className="bg-surface font-body text-on-surface selection:bg-secondary-container">
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
