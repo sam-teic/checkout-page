@@ -68,7 +68,7 @@ export default function TopNavBar() {
 
             {/* Dropdown Menu */}
             {isCartOpen && (
-              <div className="absolute right-0 top-full mt-5 w-[360px] sm:w-96 bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_12px_48px_-12px_rgba(0,0,0,0.12)] border border-gray-100 flex flex-col z-[100] max-h-[85vh] overflow-hidden animate-fade-in-up">
+              <div className="absolute top-full mt-5 -right-4 sm:right-0 w-[calc(100vw-2rem)] sm:w-96 bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_12px_48px_-12px_rgba(0,0,0,0.12)] border border-gray-100 flex flex-col z-[100] max-h-[85vh] overflow-hidden animate-fade-in-up">
                 
                 {/* Header */}
                 <div className="flex items-center justify-between p-5 border-b border-gray-100 bg-white">

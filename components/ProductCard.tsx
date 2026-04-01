@@ -11,7 +11,6 @@ export default function ProductCard({ product }: { product: Product }) {
 
   const handleAdd = () => {
     addToCart(product);
-    setIsCartOpen(true);
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 2000); // Visual feedback
   };
