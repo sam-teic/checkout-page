@@ -21,13 +21,13 @@ export default function FloatingInput({
     <div className="relative group">
       <input
         style={{ colorScheme: "light" }}
-        className={`peer w-full h-14 px-4 pt-5 pb-1 bg-white rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-900 transition-all outline-none text-gray-900 ${extraClasses}`}
+        className={`peer w-full h-14 px-4 pt-6 pb-2 bg-white rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-900 transition-all outline-none text-gray-900 ${extraClasses}`}
         id={id}
         placeholder=" "
         type={type}
       />
       <label
-        className="absolute left-4 top-4 text-gray-500 duration-300 transform -translate-y-3 scale-75 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 pointer-events-none"
+        className="absolute left-4 top-4 text-gray-500 duration-300 transform -translate-y-3 scale-75 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 pointer-events-none truncate max-w-[calc(100%-2rem)]"
         htmlFor={id}
       >
         {label}

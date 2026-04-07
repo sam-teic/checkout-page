@@ -31,7 +31,7 @@ export default function TopNavBar() {
         {/* Brand */}
         <div className="w-1/3 flex justify-start">
           <Link href="/" className="text-xl font-headline font-extrabold tracking-tighter hover:text-blue-800 transition-colors uppercase">
-            Sam
+            Sam Collections
           </Link>
         </div>
 
@@ -140,7 +140,7 @@ export default function TopNavBar() {
                             </div>
                             
                             <span className="font-bold text-sm text-blue-800">
-                              ${(item.price * item.quantity).toLocaleString("en-US", { minimumFractionDigits: 2 })}
+                              {(item.price * item.quantity).toLocaleString("en-NG", { style: "currency", currency: "NGN", maximumFractionDigits: 0 })}
                             </span>
                           </div>
                         </div>
@@ -155,7 +155,7 @@ export default function TopNavBar() {
                     <div className="flex justify-between items-center">
                       <span className="font-bold text-gray-500 text-sm">Subtotal</span>
                       <span className="font-extrabold text-xl">
-                        ${subtotal.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+                        {subtotal.toLocaleString("en-NG", { style: "currency", currency: "NGN", maximumFractionDigits: 0 })}
                       </span>
                     </div>
                     

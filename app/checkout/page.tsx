@@ -4,12 +4,14 @@ import PaymentMethod from "@/components/PaymentMethod";
 import OrderSummary from "@/components/OrderSummary";
 import Footer from "@/components/Footer";
 
-export default function CheckoutPage() {
+export default async function CheckoutPage() {
+  // Artificial network delay to show loading state
+  await new Promise((resolve) => setTimeout(resolve, 500));
   return (
     <>
       <TopNavBar />
 
-      <main className="pt-32 pb-24 px-6 md:px-12 w-full max-w-360 bg-gray-100 mx-auto min-h-screen">
+      <main className="pt-32 pb-24 px-6 md:px-12 w-full max-w-7xl bg-gray-50 mx-auto min-h-screen">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           {/* Left Column: Checkout Details */}
           <div className="lg:col-span-7 space-y-12">

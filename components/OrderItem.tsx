@@ -36,13 +36,13 @@ export default function OrderItem({
         />
       </div>
 
-      <div className="flex-grow space-y-1 ">
-        <h3 className="text-lg font-bold">{item.name}</h3>
-        <p className="mb-4 text-sm text-on-surface-variant">
+      <div className="flex-grow space-y-1 min-w-0">
+        <h3 className="text-lg font-bold truncate">{item.name}</h3>
+        <p className="mb-4 text-sm text-on-surface-variant truncate">
           Color: {item.color} / Size: {item.size}
         </p>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mt-2 flex-wrap gap-2">
           <div className="inline-flex items-center bg-gray-100 rounded-full bg-surface-container-low px-2 py-1">
             <button
               onClick={() => onQuantityChange(item.id, -1)}
@@ -62,11 +62,8 @@ export default function OrderItem({
               <Icon className="h-4 w-4" name="add" />
             </button>
           </div>
-          <span className="font-bold">
-            $
-            {(item.price * quantity).toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-            })}
+          <span className="font-bold whitespace-nowrap">
+            {(item.price * quantity).toLocaleString("en-NG", { style: "currency", currency: "NGN", maximumFractionDigits: 0 })}
           </span>
         </div>
       </div>

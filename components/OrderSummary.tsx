@@ -53,8 +53,7 @@ export default function OrderSummary() {
         <div className="flex justify-between text-on-surface-variant">
           <span>Subtotal</span>
           <span>
-            $
-            {subtotal.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+            {subtotal.toLocaleString("en-NG", { style: "currency", currency: "NGN", maximumFractionDigits: 0 })}
           </span>
         </div>
         <div className="flex justify-between text-on-surface-variant">
@@ -66,20 +65,17 @@ export default function OrderSummary() {
         <div className="flex justify-between text-on-surface-variant">
           <span>Estimated Tax</span>
           <span>
-            $
-            {estimatedTax.toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-            })}
+            {estimatedTax.toLocaleString("en-NG", { style: "currency", currency: "NGN", maximumFractionDigits: 0 })}
           </span>
         </div>
         <div className="pt-4 flex justify-between items-baseline">
           <span className="font-headline text-lg font-bold">Total</span>
           <div className="text-right">
             <span className="text-sm text-on-surface-variant block uppercase tracking-widest font-bold">
-              USD
+              NGN
             </span>
             <span className="font-headline text-3xl font-extrabold tracking-tighter">
-              ${total.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+              {total.toLocaleString("en-NG", { style: "currency", currency: "NGN", maximumFractionDigits: 0 })}
             </span>
           </div>
         </div>

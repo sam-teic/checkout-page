@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Product } from "@/lib/data";
 import { useCart } from "@/components/CartProvider";
 import { useState } from "react";
@@ -9,7 +10,9 @@ export default function ProductCard({ product }: { product: Product }) {
   const { addToCart, setIsCartOpen } = useCart();
   const [isAdded, setIsAdded] = useState(false);
 
-  const handleAdd = () => {
+  const handleAdd = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent link navigation
+    e.stopPropagation();
     addToCart(product);
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 2000); // Visual feedback
@@ -17,7 +20,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-[0_4px_24px_-8px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-500 group flex flex-col border border-gray-50">
-      <div className="relative h-72 w-full overflow-hidden bg-surface-container-low">
+      <Link href={`/products/${product.id}`} className="block relative h-72 w-full overflow-hidden bg-surface-container-low">
         <Image
           src={product.imageSrc}
           alt={product.imageAlt}
@@ -28,17 +31,17 @@ export default function ProductCard({ product }: { product: Product }) {
         <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] uppercase font-bold text-gray-800 shadow-sm tracking-widest">
           New
         </div>
-      </div>
+      </Link>
 
       <div className="p-6 flex flex-col flex-grow">
-        <div className="flex justify-between items-start mb-2">
+        <Link href={`/products/${product.id}`} className="flex justify-between items-start mb-2 group-hover:text-gray-600 transition-colors">
           <h3 className="font-headline text-lg font-semibold text-gray-900 leading-tight">
             {product.name}
           </h3>
           <span className="font-medium text-lg text-gray-500">
-            ${product.price.toLocaleString("en-US", { minimumFractionDigits: 0 })}
+            {product.price.toLocaleString("en-NG", { style: "currency", currency: "NGN", maximumFractionDigits: 0 })}
           </span>
-        </div>
+        </Link>
         
         <p className="text-sm text-on-surface-variant mb-6 line-clamp-2 flex-grow">
           {product.description}
@@ -46,7 +49,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
         <button
           onClick={handleAdd}
-          className={`w-full h-12 rounded-full font-bold text-sm flex items-center justify-center space-x-2 transition-all duration-300 active:scale-95 ${
+          className={`w-full h-12 rounded-full font-bold text-sm flex items-center justify-center space-x-2 transition-all duration-300 active:scale-95 z-10 relative ${
             isAdded
               ? "bg-green-500 text-white shadow-[0_8px_16px_-4px_rgba(34,197,94,0.3)]"
               : "bg-gray-900 text-white hover:bg-gray-800 hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.15)]"

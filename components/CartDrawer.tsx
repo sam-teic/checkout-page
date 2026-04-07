@@ -97,7 +97,7 @@ export default function CartDrawer() {
                     </div>
                     
                     <span className="font-bold text-lg">
-                      ${(item.price * item.quantity).toLocaleString("en-US", { minimumFractionDigits: 2 })}
+                      {(item.price * item.quantity).toLocaleString("en-NG", { style: "currency", currency: "NGN", maximumFractionDigits: 0 })}
                     </span>
                   </div>
                 </div>
@@ -112,7 +112,7 @@ export default function CartDrawer() {
             <div className="flex justify-between items-center text-lg">
               <span className="font-bold text-gray-500">Subtotal</span>
               <span className="font-extrabold text-2xl text-gray-900">
-                ${subtotal.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+                {subtotal.toLocaleString("en-NG", { style: "currency", currency: "NGN", maximumFractionDigits: 0 })}
               </span>
             </div>
             <p className="text-xs text-gray-500 text-center">Shipping & taxes calculated at checkout.</p>
